@@ -26,20 +26,20 @@ for (let row = 0; row < 3; row++) {
         cell.dataset.row = row;
         cell.dataset.col = col;
         cells.push(cell);
-        cell.addEventListener('click', makeMove);
+        cell.addEventListener('click', () => makeMove(cell));
         gameBoard.appendChild(cell);
     }
 }
 
-function makeMove(event) {
-    const cell = event.target;
+function makeMove(cell) {
     if (cell.classList.contains('cell') && !cell.textContent && currentPlayer && !gameOver) {
         cell.textContent = currentPlayer;
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         const winner = checkWinner();
         if (winner) {
             gameOver = true;
             alert(`Игрок ${winner} выиграл!`);
+        } else {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         }
     }
 }
@@ -52,5 +52,4 @@ function checkWinner() {
         }
     }
     return '';
-    
 }
