@@ -40,6 +40,7 @@ function makeMove(cell) {
             alert(`Игрок ${winner} выиграл!`);
         } else {
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            checkDraw();
         }
     }
 }
@@ -52,4 +53,14 @@ function checkWinner() {
         }
     }
     return '';
+}
+
+function checkDraw() {
+    if (cells.every(cell => cell.textContent)) {
+        const winner = checkWinner();
+        if (!winner) {
+            gameOver = true;
+            alert('Ничья!');
+        }
+    }
 }
