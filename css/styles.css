@@ -21,3 +21,14 @@
 .cell:hover {
     background-color: #e0e0e0;
 }
+
+#player-selection {
+    text-align: center;
+}
+
+#player-selection button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
